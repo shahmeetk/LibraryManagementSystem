@@ -55,7 +55,7 @@ def borrowBook():
                                 a=int(input())
                                 if(int(ListSplit.quantity[a])>0):
                                     print("Book is available")
-                                    with open(t,"a") as f:
+                                    with open(borrowBookFile,"a") as f:
                                         f.write(str(count) +". \t\t"+ ListSplit.bookname[a]+"\t\t  "+ListSplit.authorname[a]+"\n")
 
                                     ListSplit.quantity[a]=int(ListSplit.quantity[a])-1
