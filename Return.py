@@ -1,3 +1,4 @@
+
 import ListSplit
 import dt
 def returnBook():
@@ -10,9 +11,10 @@ def returnBook():
     
         with open(a,"r") as f:
             data=f.read()
+            print("\t\tCurrent Book Holdings\t\t\t")
             print(data)
     except:
-        print("The borrower name is incorrect")
+        print("The borrower "+name+" does not exist in System Currently")
         returnBook()
 
     b="Return-"+name+".txt"
@@ -20,36 +22,32 @@ def returnBook():
         f.write("                Library Management System \n")
         f.write("                   Returned By: "+ name+"\n")
         f.write("    Date: " + dt.getDate()+"    Time:"+ dt.getTime()+"\n\n")
-        f.write("S.N.\t\tBookname\t\tCost\n")
+        f.write("S.N.\t\tBookname\t\n")
+       
 
-
-    total=0.0
     for i in range(3):
         if ListSplit.bookname[i] in data:
             with open(b,"a") as f:
-                f.write(str(i+1)+"\t\t"+ListSplit.bookname[i]+"\t\t$"+ListSplit.cost[i]+"\n")
-                ListSplit.quantity[i]=int(ListSplit.quantity[i])+1
-            total+=float(ListSplit.cost[i])
-            
-    print("\t\t\t\t\t\t\t"+"$"+str(total))
-    print("Is the book return date expired?")
-    print("Press Y for Yes and N for No")
-    stat=input()
-    if(stat.upper()=="Y"):
-        print("By how many days was the book returned late?")
-        day=int(input())
-        fine=2*day
-        with open(b,"a")as f:
-            f.write("\t\t\t\t\tFine: $"+ str(fine)+"\n")
-        total=total+fine
-    
+                f.write(str(i+1)+"\t\t"+ListSplit.bookname[i]+"\t\n")
+                #ListSplit.quantity[i]=int(ListSplit.quantity[i])+1
+         
+    bookReturn=input(" Enter book Name you want to Return : ") 
+    if bookReturn in data:
 
-
-    print("Final Total: "+ "$"+str(total))
-    with open(b,"a")as f:
-        f.write("\t\t\t\t\tTotal: $"+ str(total))
-    
-        
-    with open("Stock.txt","w+") as f:
+        with open("Stock.txt","w+") as f:
             for i in range(3):
-                f.write(ListSplit.bookname[i]+","+ListSplit.authorname[i]+","+str(ListSplit.quantity[i])+","+"$"+ListSplit.cost[i]+"\n")
+                if (bookReturn == ListSplit.bookname[i]) :
+                    ListSplit.quantity[i]=int(ListSplit.quantity[i])+1                            
+                f.write(ListSplit.bookname[i]+","+ListSplit.authorname[i]+","+str(ListSplit.quantity[i])+"\n")
+
+        with open(a, "r") as f:
+            lines = f.readlines()
+        with open(a, "w+") as f:
+            for line in lines:
+                if bookReturn in line.strip("\n") :
+                    pass
+                else:
+                    f.write(line)
+
+    else:
+        print("Given Book "+bookReturn+" is not available in the list")
