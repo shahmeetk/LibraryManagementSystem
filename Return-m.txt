@@ -1,7 +1,0 @@
-                Library Management System 
-                   Returned By: m
-    Date: 2020-07-01    Time:10:19:48.541736
-
-S.N.		Bookname	
-0		Harry Potter	
-1		Start With Why	
