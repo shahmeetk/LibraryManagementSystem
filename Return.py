@@ -49,5 +49,13 @@ def returnBook():
                 else:
                     f.write(line)
 
+        with open(b, "r") as f:
+            lines = f.readlines()
+        with open(b, "w+") as f:
+            for line in lines:
+                if bookReturn in line.strip("\n") :
+                    pass
+                else:
+                    f.write(line)
     else:
         print("Given Book "+bookReturn+" is not available in the list")
