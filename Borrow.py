@@ -14,8 +14,8 @@ def borrowBook():
             break
         print("please input alphabet from A-Z")
             
-    t="Borrow-"+firstName+".txt"
-    with open(t,"w+") as f:
+    borrowBookFile="Borrow-"+firstName+".txt"
+    with open(borrowBookFile,"w+") as f:
         f.write("               Library Management System  \n")
         f.write("                   Borrowed By: "+ firstName+" "+lastName+"\n")
         f.write("    Date: " + dt.getDate()+"    Time:"+ dt.getTime()+"\n\n")
@@ -31,7 +31,7 @@ def borrowBook():
             try:
                 if(int(ListSplit.quantity[a])>0):
                     print("Book is available")
-                    with open(t,"a") as f:
+                    with open(borrowBookFile,"a") as f:
                         f.write("1. \t\t"+ ListSplit.bookname[a]+"\t\t  "+ListSplit.authorname[a]+"\n")
 
                     ListSplit.quantity[a]=int(ListSplit.quantity[a])-1
