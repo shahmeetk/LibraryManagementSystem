@@ -5,7 +5,8 @@ import Borrow
 
 def start():
     while(True):
-        print("        Welcome to the library management system     ")
+        print("------------------------------------------------------")
+        print("        Welcome to the Library Management System      ")
         print("------------------------------------------------------")
         print("Enter 1. To Display")
         print("Enter 2. To Borrow a book")
@@ -17,7 +18,10 @@ def start():
             if(a==1):
                 with open("stock.txt","r") as f:
                     lines=f.read()
-                    print(lines)
+                    if(lines == ''):
+                        print (" There are no books in the Library ")
+                    else:
+                        print(lines)
                     print ()
    
             elif(a==2):
