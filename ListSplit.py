@@ -20,6 +20,4 @@ def listSplit():
                     authorname.append(a)
                 elif(ind==2):
                     quantity.append(a)
-                elif(ind==3):
-                    cost.append(a.strip("$"))
                 ind+=1
