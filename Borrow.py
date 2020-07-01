@@ -45,32 +45,38 @@ def borrowBook():
                     count=1
                     while loop==True:
                         choice=str(input("Do you want to borrow more books? However you cannot borrow same book twice. Press y for yes and n for no."))
-                        if(choice.upper()=="Y"):
-                            count=count+1
-                            print("Please select an option below:")
-                            for i in range(len(ListSplit.bookname)):
-                                print("Enter", i, "to borrow book", ListSplit.bookname[i])
-                            a=int(input())
-                            if(int(ListSplit.quantity[a])>0):
-                                print("Book is available")
-                                with open(t,"a") as f:
-                                    f.write(str(count) +". \t\t"+ ListSplit.bookname[a]+"\t\t  "+ListSplit.authorname[a]+"\n")
+                        if (count< 2):
+                            if (choice.upper()=="Y"):
+                                print ("Current Book Count in your Account : "+ str(count) )
+                                count=count+1
+                                print("Please select an option below:")
+                                for i in range(len(ListSplit.bookname)):
+                                    print("Enter", i, "to borrow book", ListSplit.bookname[i])
+                                a=int(input())
+                                if(int(ListSplit.quantity[a])>0):
+                                    print("Book is available")
+                                    with open(t,"a") as f:
+                                        f.write(str(count) +". \t\t"+ ListSplit.bookname[a]+"\t\t  "+ListSplit.authorname[a]+"\n")
 
-                                ListSplit.quantity[a]=int(ListSplit.quantity[a])-1
-                                with open("Stock.txt","w+") as f:
-                                    for i in range(3):
-                                        f.write(ListSplit.bookname[i]+","+ListSplit.authorname[i]+","+str(ListSplit.quantity[i])+","+"$"+ListSplit.cost[i]+"\n")
-                                        success=False
-                            else:
+                                    ListSplit.quantity[a]=int(ListSplit.quantity[a])-1
+                                    with open("Stock.txt","w+") as f:
+                                        for i in range(3):
+                                            f.write(ListSplit.bookname[i]+","+ListSplit.authorname[i]+","+str(ListSplit.quantity[i])+","+"$"+ListSplit.cost[i]+"\n")
+                                            success=False
+                                else:
+                                    loop=False
+                                    break
+                            elif (choice.upper()=="N"):
+                                print ("Thank you for borrowing books from us. ")
+                                print("")
                                 loop=False
-                                break
-                        elif (choice.upper()=="N"):
-                            print ("Thank you for borrowing books from us. ")
-                            print("")
+                                success=True
+                            else:
+                               print("Please choose as instructed")
+                        else:
+                            print("You have reached maximum Limit of holding the 2 Book ")
                             loop=False
                             success=True
-                        else:
-                            print("Please choose as instructed")
                         
                 else:
                     print("Book is not available")
