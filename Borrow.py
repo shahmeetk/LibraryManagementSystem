@@ -37,7 +37,7 @@ def borrowBook():
                     ListSplit.quantity[a]=int(ListSplit.quantity[a])-1
                     with open("Stock.txt","w+") as f:
                         for i in range(3):
-                            f.write(ListSplit.bookname[i]+","+ListSplit.authorname[i]+","+str(ListSplit.quantity[i])+","+"$"+ListSplit.cost[i]+"\n")
+                            f.write(ListSplit.bookname[i]+","+ListSplit.authorname[i]+","+str(ListSplit.quantity[i])+"\n")
 
 
                     #multiple book borrowing code
@@ -61,7 +61,7 @@ def borrowBook():
                                     ListSplit.quantity[a]=int(ListSplit.quantity[a])-1
                                     with open("Stock.txt","w+") as f:
                                         for i in range(3):
-                                            f.write(ListSplit.bookname[i]+","+ListSplit.authorname[i]+","+str(ListSplit.quantity[i])+","+"$"+ListSplit.cost[i]+"\n")
+                                            f.write(ListSplit.bookname[i]+","+ListSplit.authorname[i]+","+str(ListSplit.quantity[i])+"\n")
                                             success=False
                                 else:
                                     loop=False

@@ -2,11 +2,9 @@ def listSplit():
     global bookname
     global authorname
     global quantity
-    global cost
     bookname=[]
     authorname=[]
     quantity=[]
-    cost=[]
     with open("stock.txt","r") as f:
         
         lines=f.readlines()
